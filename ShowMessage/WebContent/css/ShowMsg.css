@@ -23,16 +23,18 @@
 		width:20px;
 		height:20px;
 		position:absolute;
-		top:0px;
-		right:0px;
+		top:1px;
+		right:1px;
 		cursor:pointer;
 	}
 	.ShowMsg-close:hover{
 		font-weight:bold;
 		transform:rotate(180deg);
-		transition-duration:0.5s
+		transition-duration:0.5s;
 		-webkit-transform:rotate(180deg);
 		-webkit-transition-duration:0.5s;
+		-moz-transform:rotate(180deg);
+		-moz-transition-duration:0.5s;
 		background:#fff;
 	}
 	.ShowMsg p{

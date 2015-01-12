@@ -1,6 +1,6 @@
 var lastClass;
 var ShowMsg = function(jsonData) {
-	// var json=jQuery.parseJSON(jsonData);
+	console.log(typeof(jsonData));
 	var $showMsgBox = $("#ShowMsgBox");
 	var msgClass = getMsgClass(jsonData.type);
 	var title = jsonData.title || '提示';
@@ -20,22 +20,44 @@ var ShowMsg = function(jsonData) {
 		$("body").append($showMsgBox);
 	}
 	lastClass = msgClass;
-	$showMsgBox.slideDown('fast');
+	$showMsgBox.slideDown(1000, function(){
+		startTimer();
+	});
+	var timer = 0;
+	function startTimer() {
+		timer = setTimeout(function() {
+			$showMsgBox.fadeOut(5000);
+		}, 2000);
+	}
+	function getMsgClass(clsFlag){
+		  var cls;
+		  switch(clsFlag){
+		  case 'S':cls='ShowMsg-success';break;
+		  case 'F':cls='ShowMsg-fail';break;
+		  case 'W':cls='ShowMsg-warning';break;
+		  default:
+			  cls="ShowMsg-info";
+		  }
+		  return cls;
+	}
+	$showMsgBox.hover(function(){
+		if (timer) {
+			if ($(this).css("opacity") < 1) {
+				//console.log("enter");
+				$(this).stop();
+				$(this).css("opacity", "1.0");
+				clearTimeout(timer);
+			}
+		}
+	}, function(){
+		//console.log("out");
+		startTimer();
+	});
 	$(".ShowMsg-close").click(function() {
-		$(".ShowMsg").slideUp('fast', function() {
+		$(".ShowMsg").slideUp(1000, function() {
 			$(".ShowMsg").removeClass(msgClass);
+			clearTimeout(timer);
 		});
 	});
 };
   
-  function getMsgClass(clsFlag){
-	  var cls;
-	  switch(clsFlag){
-	  case 'S':cls='ShowMsg-success';break;
-	  case 'F':cls='ShowMsg-fail';break;
-	  case 'W':cls='ShowMsg-warning';break;
-	  default:
-		  cls="ShowMsg-info";
-	  }
-	  return cls;
-  }
