@@ -7,6 +7,7 @@
 	bottom: 0px;
 	left: 50%;
 	margin-left: -200px;
+	background: #fff;
 }
 /*消息层标题*/
 .ShowMsg-title {
@@ -68,14 +69,14 @@
 .ShowMsg-success .ShowMsg-close:hover {
 	color: #15cc1f;
 }
-/*fail级别*/
-.ShowMsg-fail {
+/*error级别*/
+.ShowMsg-error {
 	border-color: #f32750;
 }
-.ShowMsg-fail .ShowMsg-title {
+.ShowMsg-error .ShowMsg-title {
 	background: #f32750;
 }
-.ShowMsg-fail .ShowMsg-close:hover {
+.ShowMsg-error .ShowMsg-close:hover {
 	color: #f32750;
 }
 /*warning级别*/
