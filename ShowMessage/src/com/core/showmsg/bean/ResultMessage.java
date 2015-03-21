@@ -38,7 +38,7 @@ public class ResultMessage{
 		this.type = type;
 	}
 	
-	public JSONObject getJSONResult(){
+	public JSONObject toJSONObj(){
 		jsonResult.put("msg", message);
 		jsonResult.put("type", type.getType());
 		return jsonResult;

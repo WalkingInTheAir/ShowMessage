@@ -11,6 +11,7 @@ import com.core.showmsg.bean.ResultMessage;
 import com.core.showmsg.bean.ResultMessageFactory;
 import com.core.showmsg.bean.ResultType;
 
+
 /**
  * Servlet implementation class T
  */
@@ -53,7 +54,7 @@ public class T extends HttpServlet {
 			msg = ResultMessageFactory.getInfoResult("INFO CALL BACK");
 		}
 		
-		response.getWriter().println(msg.getJSONResult());
+		response.getWriter().println(msg.toJSONObj());
 	}
 
 }
